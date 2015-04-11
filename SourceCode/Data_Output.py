@@ -91,7 +91,7 @@ if __name__ == '__main__':
 
 	G = Graph_SelEdg_Generator(nodes_number, aim_degree)
 	# G = read_graph("8n4d.xml")
-	G.add_edge(0,220)
+	# G.add_edge(0,220)
 
 	# data_output( G, aim_degree, 0, "test")
 	data_output( G, aim_degree, 4)

@@ -27,31 +27,31 @@ def basic_SCB(G_input):
 		G = G_input
 		scbfile = open( "pt_SCB.txt" , "w")
 
+	print >> scbfile, "Forbidden  Turns"
 	
-	
-	node_number = 0
+	selected_node_number = 0
 
 	while True:
 
 		if len(G.nodes(data=True)) == 2:
 
-			print G.nodes(data=True)
+			# print G.nodes(data=True)
 
 			break
 		else:	
 			sorted_degree_nodes = sorted(G.degree().iteritems(), key = itemgetter(1))
-			print sorted_degree_nodes
+			# print sorted_degree_nodes
 
 			for xnode in sorted_degree_nodes:
 				if not is_cut_node(G, xnode[0]) \
 				and check_sum_neighbors_deg(G, xnode[0]):
-					print `xnode[0]`
+					# print `xnode[0]`
 					if G.degree(xnode[0]) > 1:
-						print "combinations:" + `[x for x in itertools.combinations(all_neighbors(G, xnode[0]), 2)]`
+						# print "combinations:" + `[x for x in itertools.combinations(all_neighbors(G, xnode[0]), 2)]`
 						for pair in itertools.combinations(all_neighbors(G, xnode[0]), 2):
-							print "(" + `pair[0]` + "," + `xnode[0]` + "," + `pair[1]` + ")," + `node_number`
-							print >> scbfile, "(" + `pair[0]` + "," + `xnode[0]` + "," + `pair[1]` + ")," + `node_number`
-					node_number += 1
+							# print "(" + `pair[0]` + "," + `xnode[0]` + "," + `pair[1]` + ")," + `selected_node_number`
+							print >> scbfile, "(" + `pair[0]` + "," + `xnode[0]` + "," + `pair[1]` + ")," + `selected_node_number`
+					selected_node_number += 1
 					G.remove_node( xnode[0] )
 					break
 	scbfile.close
@@ -66,8 +66,8 @@ def check_sum_neighbors_deg(G ,node):
 		neighbors_counter += 1
 
 	if  neighbors_counter * neighbors_counter <= deg_sum:
-		print "node: " + `node` + ", neighbors:" + `[k for k in all_neighbors(G, node)]`
-		print "node: " + `node` + ", number of neighbors: " + `neighbors_counter` + ", sum of deg: " + `deg_sum`
+		# print "node: " + `node` + ", neighbors:" + `[k for k in all_neighbors(G, node)]`
+		# print "node: " + `node` + ", number of neighbors: " + `neighbors_counter` + ", sum of deg: " + `deg_sum`
 
 		return True
 	else:
@@ -103,8 +103,8 @@ if __name__ == '__main__':
 	# print g.edges(data=True)
 
 
-	basic_SCB("8n4d.xml")
-	# basic_SCB("paperexample.xml")
+	# basic_SCB("8n4d.xml")
+	# basic_SCB("sample_topologies/paperexample.xml")
 	# basic_SCB("paperexample3.xml")
 	# basic_SCB("myex.xml")
 
@@ -118,12 +118,12 @@ if __name__ == '__main__':
 
 
 ## work on data set
-	# work_path = "/Users/chenyu/Workspace/Python/MS_Project/SCB/"
-
-	# for x in os.walk(work_path):
-	# 	xmlfile = x[0] + "/GraphML.xml"
-	# 	if os.path.isfile(xmlfile):
-	# 		basic_SCB(xmlfile)
+	work_path = "/Users/chenyu/Workspace/Python/MS_Project/SCB/"
+	for x in os.walk(work_path):
+		xmlfile = x[0] + "/GraphML.xml"
+		print xmlfile
+		if os.path.isfile(xmlfile):
+			basic_SCB(xmlfile)
 
 
 
