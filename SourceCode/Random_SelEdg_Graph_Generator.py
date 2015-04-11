@@ -10,16 +10,18 @@ import random
 from Random_Tree_Generator import add_edge_tree_generator
 from Even_Distributed_Random_Tree_Generator import even_dis_tree_generator
 from Even_Union_Tree_Generator import even_uino_tree_generator
+from Data_Output import data_output
 
-def Graph_SelEdg_Generator(No_nodes, deg_exp):
+def Graph_SelEdg_Generator(No_nodes, deg_exp, seed):
 
 	global ave_deg
 	ave_deg = 0.0
 
-	
+	random.seed(seed);
+
 	# G = add_edge_tree_generator(No_nodes, 16)
 	# G = even_dis_tree_generator(No_nodes,16)
-	G = even_uino_tree_generator(No_nodes, 16)
+	G = even_uino_tree_generator(No_nodes, 16, seed)
 
 
 
@@ -84,8 +86,7 @@ def Graph_SelEdg_Generator(No_nodes, deg_exp):
 
 if __name__ == '__main__':
 
-	g = Graph_SelEdg_Generator(10 , 4)
-	# g = random_degree_sequence_graph( tree_degree_sequence_generator(8,16) )
+	# g = Graph_SelEdg_Generator(10 , 4)
 
 	# print g.nodes(data = True)
 
@@ -98,7 +99,12 @@ if __name__ == '__main__':
 
 
 
-
+# generate radon topology data set
+	nodes_number = 8
+	aim_degree = 4
+	for x in xrange(0,10):
+		G = Graph_SelEdg_Generator(nodes_number, aim_degree, x)
+		data_output( G, aim_degree, x, "Me")
 
 
 

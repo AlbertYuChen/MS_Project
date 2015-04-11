@@ -7,7 +7,6 @@ from Graph_Plotor import plot_graph
 import networkx as nx
 import os
 from Graph_Reader import read_graph
-from Random_SelEdg_Graph_Generator import Graph_SelEdg_Generator
 
 def data_output(*args):
 
@@ -86,17 +85,26 @@ def data_output(*args):
 	return
 
 if __name__ == '__main__':
-	nodes_number = 8
-	aim_degree = 4
+	# nodes_number = 8
+	# aim_degree = 4
 
-	G = Graph_SelEdg_Generator(nodes_number, aim_degree)
-	# G = read_graph("8n4d.xml")
-	# G.add_edge(0,220)
+	# G = Graph_SelEdg_Generator(nodes_number, aim_degree)
+	# # G = read_graph("8n4d.xml")
+	# # G.add_edge(0,220)
 
-	# data_output( G, aim_degree, 0, "test")
-	data_output( G, aim_degree, 4)
+	# # data_output( G, aim_degree, 0, "test")
+	# data_output( G, aim_degree, 4, "Me")
+
+	pass
 
 
+
+# # generate radon topology data set
+# 	nodes_number = 8
+# 	aim_degree = 4
+# 	for x in xrange(0,10):
+# 		G = Graph_SelEdg_Generator(nodes_number, aim_degree)
+# 		data_output( G, aim_degree, x, "Me")
 
 
 

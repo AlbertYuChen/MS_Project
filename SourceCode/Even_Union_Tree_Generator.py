@@ -10,7 +10,9 @@ import random
 from random import randint
 
 
-def even_uino_tree_generator(No_nodes, node_upper_bound):
+def even_uino_tree_generator(No_nodes, node_upper_bound, seed):
+	
+	random.seed(seed);
 
 	nodes_list = [[x] for x in xrange(0,No_nodes)]
 	G=nx.Graph()
