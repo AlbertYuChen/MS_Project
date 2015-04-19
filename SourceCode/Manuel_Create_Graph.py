@@ -57,18 +57,42 @@ def manuel_creat_graph():
 	# G.add_edge(9,11)
 	# G.add_edge(10,11)
 
-	G.add_edge(1,2)
-	G.add_edge(1,3)
-	G.add_edge(2,3)
-	G.add_edge(2,4)
-	G.add_edge(2,5)
-	G.add_edge(3,6)
-	G.add_edge(3,7)
-	G.add_edge(4,6)
+	# G.add_edge(1,2)
+	# G.add_edge(1,3)
+	# G.add_edge(2,3)
+	# G.add_edge(2,4)
+	# G.add_edge(2,5)
+	# G.add_edge(3,6)
+	# G.add_edge(3,7)
+	# G.add_edge(4,6)
 	
+	# G.add_edge(5,6)
+
+
+	G.add_edge(0,1)
+	G.add_edge(0,4)
+	G.add_edge(1,2)
+	G.add_edge(1,5)
+	G.add_edge(2,3)
+	G.add_edge(2,6)
+	G.add_edge(3,7)
+	G.add_edge(4,5)
+	G.add_edge(4,8)
 	G.add_edge(5,6)
-
-
+	G.add_edge(5,9)
+	G.add_edge(6,10)
+	G.add_edge(6,7)
+	G.add_edge(7,11)
+	G.add_edge(8,9)
+	G.add_edge(8,12)
+	G.add_edge(9,10)
+	G.add_edge(9,13)
+	G.add_edge(10,11)
+	G.add_edge(10,14)
+	G.add_edge(11,15)
+	G.add_edge(12,13)
+	G.add_edge(13,14)
+	G.add_edge(14,15)
 
 	return G
 
@@ -88,9 +112,9 @@ if __name__ == '__main__':
 
 
 	g = manuel_creat_graph()
+	print(nx.average_shortest_path_length(g))
 
-
-	data_output( g, 0, 3)
+	# data_output( g, 0, 3)
 
 	plot_graph(g)
 

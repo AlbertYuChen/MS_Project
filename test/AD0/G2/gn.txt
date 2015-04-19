@@ -1,7 +1,6 @@
 graph G {
-
-node [shape=circle]; edge [len=1];
-
+node [shape=circle];
+edge [len=1];
 1 -- 2;
 1 -- 4;
 1 -- 5;
@@ -19,4 +18,3 @@ node [shape=circle]; edge [len=1];
 9 -- 11;
 10 -- 11;
 }
-

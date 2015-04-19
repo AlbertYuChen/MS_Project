@@ -52,15 +52,16 @@ def data_output(*args):
 	    os.makedirs(os.path.dirname(gconfilename))
 
 	file = open( gconfilename , "w")
-	print >> file, "graph G {\n"
-	print >> file, "node [shape=circle]; edge [len=1];\n"
+	print >> file, "graph G {"
+	print >> file, "node [shape=circle];"
+	print >> file, "edge [len=1];"
 
 	for edgex in G.edges(data = True):
 
 		# print >> file,  `int(edgex[0])` + " -- " + `int(edgex[1])` + ";"
 		print >> file,  `edgex[0]` + " -- " + `edgex[1]` + ";"
 
-	print >> file, "}\n"
+	print >> file, "}"
 	file.close
 
 
@@ -96,7 +97,6 @@ if __name__ == '__main__':
 	# data_output( G, aim_degree, 4, "Me")
 
 	pass
-
 
 
 # # generate radon topology data set
