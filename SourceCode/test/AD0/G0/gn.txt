@@ -1,9 +1,0 @@
-graph G {
-
-node [shape=circle]; edge [len=1];
-
-8 -- 9;
-8 -- 29;
-9 -- 29;
-}
-

@@ -3,7 +3,7 @@
 from networkx import *
 from networkx.generators.degree_seq import *
 import matplotlib.pyplot as plt
-from Graph_Plotor import plot_graph
+# from Graph_Plotor import plot_graph
 import networkx as nx
 
 

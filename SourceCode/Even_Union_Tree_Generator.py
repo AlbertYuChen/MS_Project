@@ -52,7 +52,7 @@ def even_uino_tree_generator(No_nodes, node_upper_bound, seed):
 if __name__ == '__main__':
 
 
-	g = even_uino_tree_generator(9,3)
+	g = even_uino_tree_generator(9,3,0)
 
 
 

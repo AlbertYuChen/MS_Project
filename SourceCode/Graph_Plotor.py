@@ -4,8 +4,18 @@ from networkx import *
 from networkx.generators.degree_seq import *
 import matplotlib.pyplot as plt
 import networkx as nx
+import os
+from Graph_Reader import read_graph
 
-def plot_graph(G):
+def plot_graph(G_input):
+
+	if type(G_input) == str:
+		G = read_graph(G_input)
+	else:
+		G = G_input
+
+
+
 	####################	Graph Plotor    ####################
 	# degree_sequence=sorted(nx.degree(G).values(),reverse=True) # degree sequence
 	# #print "Degree sequence", degree_sequence
@@ -37,14 +47,60 @@ def plot_graph(G):
 	nx.draw_networkx_labels(Gcc,pos,labels,font_size=16)
 
 
-	plt.savefig("example2.png")
+	
+
+	if type(G_input) == str:
+		work_path = os.path.dirname(os.path.realpath(G_input))
+		plt.savefig(work_path + "/8n.png")
+	else:
+		plt.savefig("8n.png")
+
 	plt.show()
 
-	pass
+	plt.clf()
+
+	
+
 
 
 
 
 if __name__ == '__main__':
 
-    plot_graph(G)
+   plot_graph("/Users/chenyu/Workspace/Python/MS_Project/SourceCode/sample_topologies/8n.xml")
+
+ #    ## work on data set
+	# work_path = "/Users/chenyu/Workspace/Python/MS_Project/test/PE_layout/"
+	# for x in os.walk(work_path):
+	# 	xmlfile = x[0] + "/GraphML.xml"
+	# 	if os.path.isfile(xmlfile):
+	# 		print os.path.dirname(os.path.realpath(xmlfile))
+	# 		plot_graph(xmlfile)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

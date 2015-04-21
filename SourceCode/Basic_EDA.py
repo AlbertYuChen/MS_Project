@@ -29,9 +29,6 @@ def basic_EDA(G_input):
 
 	print >> edafile, "Forbidden  Turns"
 
-	print  G_input
-
-
 	selected_node_num = 0
 	valid_node = False
 
@@ -105,13 +102,13 @@ if __name__ == '__main__':
 
 
 
-# ## work on data set
-# 	work_path = "/Users/chenyu/Workspace/Python/MS_Project/EDA/"
-# 	for x in os.walk(work_path):
-# 		xmlfile = x[0] + "/GraphML.xml"
-# 		print xmlfile
-# 		if os.path.isfile(xmlfile):
-# 			basic_EDA(xmlfile)
+## work on data set
+	work_path = "/Users/chenyu/Workspace/Python/MS_Project/test/"
+	for x in os.walk(work_path):
+		xmlfile = x[0] + "/GraphML.xml"
+		if os.path.isfile(xmlfile):
+			print os.path.dirname(os.path.realpath(xmlfile))
+			basic_EDA(xmlfile)
 
 
 

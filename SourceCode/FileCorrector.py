@@ -14,7 +14,7 @@ import itertools
 import os
 
 
-def correctfile(G_path):
+def correct_gn(G_path):
 	G = read_graph(G_path)
 
 	file = open(os.path.dirname(os.path.realpath(G_path)) + "/gn.txt" , "w")
@@ -30,6 +30,22 @@ def correctfile(G_path):
 	print >> file, "}"
 	file.close
 
+def correct_gcon(G_path):
+	G = read_graph(G_path)
+
+
+
+	file = open(os.path.dirname(os.path.realpath(G_path)) + "/gcon.txt" , "w")
+
+	# for x in xrange(0,len(G.adjacency_list())):
+	for x in nodes_iter(G):
+
+		# print x, ' '.join(map(str, G.adjacency_list()[x]))
+		print >> file, x, ' '.join(map(str, [x for x in all_neighbors(G, x)]))
+
+	file.close
+
+
 
 if __name__ == '__main__':
 
@@ -39,12 +55,10 @@ if __name__ == '__main__':
 
 	for x in os.walk(work_path):
 		xmlfile = x[0] + "/GraphML.xml"
-
 		if os.path.isfile(xmlfile):
-			# print xmlfile
 			print os.path.dirname(os.path.realpath(xmlfile))
-			correctfile(xmlfile)
-
+			correct_gn(xmlfile)
+			correct_gcon(xmlfile)
 
 
 
