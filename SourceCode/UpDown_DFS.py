@@ -20,7 +20,7 @@ from itertools import groupby
 G = nx.Graph()
 time = -1
 
-def search_dfs_tree(G_in, work_path, Source):
+def search_dfs_tree(G_in, work_path):
 	global time, G
 	dfstfile = open( work_path + "/DFST.txt" , "w")
 
@@ -28,22 +28,35 @@ def search_dfs_tree(G_in, work_path, Source):
 	time = 0
 	nx.set_node_attributes(G, 'label', -1)
 
-	for node in G.nodes(data=True):
-		dfs_visit(node[0])
+	Nodes_List = [x[0] for x in G.nodes(data=True)]
 
-	print G.nodes(data=True)
+	random.seed(0)
+	random.shuffle(Nodes_List)
+
+	# print Nodes_List
+
+	for node in Nodes_List:
+		if G.node[node]['label'] == -1:
+			dfs_visit(node)
+
+	# print G.nodes(data=True)
+
 	dfstfile.close
 	return G
 
 def dfs_visit(node_u):
 	global time, G
 
-	G.node[node_u]['label'] = time
-	time = time + 1
 	
+	G.node[node_u]['label'] = time
+	# print time
+	time = time + 1
+
+	# print "node: ", node_u
+
 	for v in all_neighbors(G, node_u):
 		if G.node[v]['label'] == -1:
-			
+			# print "node: ",v
 			dfs_visit(v)
 
 
@@ -63,16 +76,9 @@ def updown_dfs(G_input):
 
 	node_counter = 0
 
-	random.seed(0)
-	Source_Node = 0
-
-	G = search_dfs_tree(G, work_path, Source_Node)
+	G = search_dfs_tree(G, work_path)
 
 	new_node_list = sorted(G.nodes(data=True), key=lambda x: x[1]['label'])
-
-	# print G.nodes(data=True)
-	# print new_node_list
-	# print Source_Node
 
 	print >> udfile, "Forbidden  Turns"
 
@@ -92,21 +98,24 @@ if __name__ == '__main__':
 
 	# g = read_graph("sample_topologies/PE_layout/paperexample1/GraphML.xml")
 	# g = read_graph("sample_topologies/8n.xml")
-	path  = "sample_topologies/PE_layout/paperexample3/GraphML.xml"
+	# path  = "sample_topologies/PE_layout/paperexample1/GraphML.xml"
 	# updown_dfs(path)
-	g = read_graph(path)
-	search_dfs_tree(g, "sample_topologies/PE_layout/paperexample3", 1)
+	# g = read_graph(path)
+	# search_dfs_tree(g, "sample_topologies/PE_layout/paperexample2")
+
+
+
 
 	## work on data set
 
-	# # work_path = "/Users/chenyu/Workspace/Python/MS_Project/TestCase/PE_UD_BFS/"
-	# work_path = "/Users/chenyu/Workspace/Python/MS_Project/UP_DOWN/"
+	# work_path = "/Users/chenyu/Workspace/Python/MS_Project/TestCase/PE_UD_DFS/"
+	work_path = "/Users/chenyu/Workspace/Python/MS_Project/UP_DOWN_DFS/"
 
-	# for x in os.walk(work_path):
-	# 	xmlfile = x[0] + "/GraphML.xml"
-	# 	if os.path.isfile(xmlfile):
-	# 		print os.path.dirname(os.path.realpath(xmlfile))
-	# 		updown_dfs(xmlfile)
+	for x in os.walk(work_path):
+		xmlfile = x[0] + "/GraphML.xml"
+		if os.path.isfile(xmlfile):
+			print os.path.dirname(os.path.realpath(xmlfile))
+			updown_dfs(xmlfile)
 
 
 

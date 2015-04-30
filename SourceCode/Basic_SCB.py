@@ -118,7 +118,9 @@ if __name__ == '__main__':
 
 
 ## work on data set
-	work_path = "/Users/chenyu/Workspace/Python/MS_Project/test/PE_SCB/"
+	work_path = "/Users/chenyu/Workspace/Python/MS_Project/SourceCode/sample_topologies/PE_layout/"
+	# work_path = "/Users/chenyu/Workspace/Python/MS_Project/test/PE_SCB/"
+
 	for x in os.walk(work_path):
 		xmlfile = x[0] + "/GraphML.xml"
 		if os.path.isfile(xmlfile):
